@@ -23,7 +23,7 @@ class LinkedList:
 
     def is_empty(self):
         return self.head == None
-        
+
     def size(self):
         """
         Returns the number of nodes in the list 
@@ -39,6 +39,7 @@ class LinkedList:
         
         return count
 
+
     def add(self, data):
         """
         Adds a new Node containing data at head of the list
@@ -48,6 +49,7 @@ class LinkedList:
         new_node = Node(data)
         new_node.next_node = self.head
         self.head = new_node
+
 
     def search(self, key):
         """
@@ -96,9 +98,13 @@ class LinkedList:
             prev_node.next_node = new
             new.next_node = next_node
 
+
     def remove(self, key):
         """
-        
+        Removes Node containing data that matches the key
+        Returns the node or None if the key doesn't exist
+
+        Takes O(n) time
         """
         current = self.head
         previous = None
@@ -115,6 +121,18 @@ class LinkedList:
                 previous = current
                 current = current.next_node
 
+    def node_at_index(self, index):
+        if index == 0:
+            return self.head
+        else:
+            current = self.head
+            position = 0
+
+            while position < index:
+                current = current.next_node
+                position += 1
+            
+            return current
 
     def __repr__(self):
         """
